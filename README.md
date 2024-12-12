@@ -50,3 +50,42 @@ dentro de index.js colocamos el codigo:
 - app.listen(PORT,()=>{ : Escucha el puerto y avisame en el console.log
     console.log(`Listening port ${PORT}`)  :  El mensaje que todo esta OK
 })
+
+## Segunda parte:
+
+En el proyecto  creamos las carpetas para manejar la logica
+```
+mkdir controllers routes models
+
+```
+Luego se ingresa a la carpeta creada controllers
+```
+cd controllers/
+```
+se crea el archivo holacontroller.js
+```
+touch holacontroller.js
+```
+De igual manera desde la carpeta routes se crea el archivo helloRoutes.js para manejar las rutas
+```
+touch routes/helloRoutes.js
+```
+dentro de helloRoutes.js colocamos el codigo:
+
+- const express = require("express") :--> Trae express desde node_modules para poderlo usar
+
+- const router =express.Router() : --> se crea una instancia de Router utilizando express.Router()
+
+- const holaController = require("../controllers/holacontroller") : --> se importa el controlador que llamamos holacontroller desde el directorio donde se encuentra
+
+- router.get("/test",holaController.holaMundo) : --> 
+- router.get("/testing",holaController.testing)
+
+- module.exports = router
+```
+```
+```
+```
+```
+
+
