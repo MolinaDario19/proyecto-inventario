@@ -78,14 +78,26 @@ dentro de helloRoutes.js colocamos el codigo:
 
 - const holaController = require("../controllers/holacontroller") : --> se importa el controlador que llamamos holacontroller desde el directorio donde se encuentra
 
-- router.get("/test",holaController.holaMundo) : --> 
-- router.get("/testing",holaController.testing)
+- router.get("/test",holaController.holaMundo) : --> se define un verbo GET para la ruta /test. Cuando se recibe una solicitud GET a /test desde postman o Bruno, se ejecuta la función holaMundo del holaController
 
-- module.exports = router
-```
-```
-```
-```
-```
+- router.get("/testing",holaController.testing) : -->  se define un verbo GET para la ruta /test. Cuando se recibe una solicitud GET a /test desde postman o Bruno, se ejecuta la función holaMundo del holaController
 
+- module.exports = router : --> se exporta el modulo router para que pueda ser utilizado
 
+- exports.holaMundo = (req,res)=>{
+        console.log("hola desde controller")
+        res.send("hola desde controller")
+    } :--> Se crea y se exporta la función que llamamos holaMundo, para que la función esté disponible y se pueda utilizar en helloRoutes
+
+- exports.testing = (req,res)=>{
+        console.log("hola desde controller testing")
+        res.send("hola desde controller testing ") 
+    } :--> Se crea y se exporta la función que llamamos testing, para que la función esté disponible y se pueda utilizar en helloRoutes
+
+Cada vez que se realiza un cambio o se crea una tuta se levanta el servidor con 
+```
+node index.js
+```
+Luego desde postman o Bruno se realiza las peticiones a cada ruta, ejemplo: 
+```
+127.0.0.1:3000/api/hola/testing 
