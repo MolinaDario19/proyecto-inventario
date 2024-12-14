@@ -1,6 +1,9 @@
 //Trae express para poderlo usar
-const express = require("express")
-const helloRoutes = require("./routes/helloRoutes")
+const express = require("express");
+const helloRoutes = require("./routes/helloRoutes");
+require("dotenv").config()
+const inventarioRoutes =require("./routes/inventario")
+const mongoose = require("mongoose")
 // Crea una unstancia para usar express
 const app = express();
 PORT = 3000;
@@ -12,9 +15,17 @@ app.set("PORT", PORT);
 app.get("/hola",(req,res)=>{
     res.send("Hola Mundo mundial")
 })
+
+app.use(express.json())
+
 //Routes
 app.use("/api/hola",helloRoutes)
+app.use("/api/inventario",inventarioRoutes)
 
+mongoose.connect(process.env.MONGO_URI)
+
+.then(()=> console.log("Conectado a la base de datos"))
+.catch((err)=>console.error(err));
 
 app.listen(PORT,()=>{
     console.log(`Listening port ${PORT}`)
