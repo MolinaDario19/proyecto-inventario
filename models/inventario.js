@@ -14,6 +14,12 @@
         default:0
     },
 
+    marca:{
+        type:String,
+        required: true,
+        maxLenght:100
+    },
+
     color:{
         type:String,
         required: true,

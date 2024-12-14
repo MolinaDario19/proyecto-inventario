@@ -16,7 +16,7 @@ app.get("/hola",(req,res)=>{
     res.send("Hola Mundo mundial")
 })
 
-app.use(express.json())
+app.use(express.json()) // middleware es quien me controla las rutas
 
 //Routes
 app.use("/api/hola",helloRoutes)
